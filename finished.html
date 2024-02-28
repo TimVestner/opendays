@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel='stylesheet' href='./style.css' type='text/css'>
+    <link rel='stylesheet' href='./style_index.css' type='text/css'>
+    <script src="helpers.js"></script>
+    <script>
+        var teamArray = JSON.parse(localStorage.teamList);
+        var score = parseInt(teamArray[teamArray.findIndex(obj => obj.Teamname == localStorage.currentTeam)].Score);
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="instructions">
+            <h1>Well done!</h1>
+        </div>
+
+        <div class="score">
+        </div>
+
+        <div class="empty">
+        </div>
+
+        <div class="intro">
+            <p>Your team achieved a score of <b><span id="score"></span> points</b>.</p>
+            <p>Your password for this task is <b>Cortex</b>.</p>
+            <p>Don't forget to reset the task below.</p>
+            <p><a href="index.html" class="finishlink">Reset Task &gt;</a></p>
+        </div>
+
+        <div class="highscores">
+            <p><b>Leaderboard</b></p>
+            <ul class="conceptlist" id="scorelist">
+            </ul>
+            </p>
+        </div>
+    </div>
+</body>
+
+<script>
+    window.onload = () => {
+        populateHighScores();
+        document.getElementById("score").innerHTML = score;
+    }
+</script>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel='stylesheet' href='./style.css' type='text/css'>
+    <link rel='stylesheet' href='./style_neuro.css' type='text/css'>
+    <script src="helpers.js"></script>
+    <script>
+        var activeConcept = "";
+        var activeExample = "";
+        var solvedItems = [];
+        var correctGuesses = 0;
+        var incorrectGuesses = 0;
+        var toSolve = 5;
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="instructions">
+            <p class="larger">In <b>Cognitive Neuroscience</b>, we look at how the brain impacts our thinking and
+                behaviour. To do this, we can look at common brain disorders.</p>
+            <p>Match the disorders to the images below!</p>
+        </div>
+        <div class="score">
+            <p><b>Score: <span id="score">0</span></b></p>
+            <p>Correct Guesses: <span id="correctGuesses">0</span>
+                <br>Incorrect Guesses: <span id="incorrectGuesses">0</span>
+            </p>
+        </div>
+        <div class="concepts">
+            <ul class="conceptlist">
+                <li><a class="clickableConcept" id="alzheimers_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('alzheimers_concept')">Alzheimer's Disease</a>
+                    <p class="details" style="display: none;">Alzheimer's affects the entire brain, especially memory
+                        and thinking. Certain proteins don't get removed and cause the brain to shrink.</p>
+                </li>
+                <li><a class="clickableConcept" id="tumors_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('tumors_concept')">Brain Tumors</a>
+                    <p class="details" style="display: none;">Brain Tumors are abnormal growths in the brain. Not all of
+                        them are dangerous and how they affect a person depends on their location.</p>
+                </li>
+                <li><a class="clickableConcept" id="parkinsons_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('parkinsons_concept')">Parkinson's Disease</a>
+                    <p class="details" style="display: none;">Parkinson's Disease affects areas deep within the brain
+                        that are responsible for movement. The cells in these areas have trouble talking to each other
+                        because they have less of the chemicals that they use for communication.</p>
+                </li>
+                <li><a class="clickableConcept" id="hemor_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('hemor_concept')">Stroke - Hemorrhagic</a>
+                    <p class="details" style="display: none;">In hemorrhagic strokes, blood vessels start bleeding,
+                        which means that the areas connected to these vessels don't get enough blood and can't function
+                        properly.</p>
+                </li>
+                <li><a class="clickableConcept" id="ischemic_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('ischemic_concept')">Stroke - Ischemic</a>
+                    <p class="details" style="display: none;">In ischemic strokes, blood vessels get blocked, which
+                        means that the areas connected to these vessels don't get enough blood and can't function
+                        properly.</p>
+                </li>
+            </ul>
+            </p>
+        </div>
+        <div class="examples">
+            <div>
+                <img src="brains.png" id="framingeffects" />
+                <a id="all" href="javascript:void(0);" onclick=""> </a>
+                <a class="correct clickableExample" id="alzheimers" href="javascript:void(0);"
+                    onclick="clickedExample('alzheimers')"> </a>
+                <a class="correct clickableExample" id="tumors" href="javascript:void(0);"
+                    onclick="clickedExample('tumors')"> </a>
+                <a class="correct clickableExample" id="parkinsons" href="javascript:void(0);"
+                    onclick="clickedExample('parkinsons')"> </a>
+                <a class="correct clickableExample" id="hemor" href="javascript:void(0);"
+                    onclick="clickedExample('hemor')"> </a>
+                <a class="correct clickableExample" id="ischemic" href="javascript:void(0);"
+                    onclick="clickedExample('ischemic')"> </a>
+            </div>
+        </div>
+    </div>
+    <div><a href="javascript:void(0);" onclick="nextTask('cyber.html')" class="contilink skip" id="continue">Skip to
+            next area &gt;</a></div>
+</body>
+<script>
+    // document.getElementById('all').addEventListener('click', wrongClick);
+    updateScore();
+    var trueExamples = document.getElementsByClassName('correct');
+    for (var i = 0, j = trueExamples.length; i < j; i++) {
+        trueExamples[i].addEventListener('click', correctClick);
+    }
+</script>
+
+</html>

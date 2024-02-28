@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel='stylesheet' href='./style.css' type='text/css'>
+    <link rel='stylesheet' href='./style_language.css' type='text/css'>
+    <script src="helpers.js"></script>
+    <script>
+        var activeSaying = "";
+        var activeMeaning = "";
+        var solvedItems = [];
+        var correctGuesses = 0;
+        var incorrectGuesses = 0;
+        var toSolve = 5;
+
+        function clickedSaying(name) {
+            if (document.getElementById(name).classList.contains("clickableConcept") && activeSaying != name) {
+                activeSaying = name;
+            } else {
+                activeSaying = "";
+            }
+            updateTextElements();
+        }
+
+        function clickedMeaning(name) {
+            if (document.getElementById(name).classList.contains("clickableConcept") && activeMeaning != name) {
+                activeMeaning = name;
+            } else {
+                activeMeaning = "";
+            }
+            updateTextElements();
+        } 
+        
+        function updateTextElements() {
+
+            if (activeSaying == activeMeaning + "_saying") {
+                correctGuesses++;
+                solvedItems.push(activeSaying);
+                solvedItems.push(activeMeaning);
+                activeSaying = "";
+                activeMeaning = "";
+            } else if (activeSaying != "" && activeMeaning != "") {
+                incorrectGuesses++;
+                document.getElementById(activeSaying).classList.remove("activeConcept");
+                document.getElementById(activeMeaning).classList.remove("activeConcept");
+                document.getElementById(activeSaying).classList.add("incorrectConcept");
+                document.getElementById(activeMeaning).classList.add("incorrectConcept");
+                activeSaying = "";
+                activeMeaning = "";
+                setTimeout(reset, 1000);
+            }
+
+            var clickableConcepts = document.getElementsByClassName('clickableConcept');
+            for (var i = 0, j = clickableConcepts.length; i < j; i++) {
+                if (solvedItems.includes(clickableConcepts[i].id)) {
+                    clickableConcepts[i].classList.add("solvedConcept");
+                } else if (activeSaying == clickableConcepts[i].id || activeMeaning == clickableConcepts[i].id) {
+                    clickableConcepts[i].classList.add("activeConcept");                    
+                } else {
+                    clickableConcepts[i].classList.remove("activeConcept");
+                }
+            }
+
+            var solvedStuff = document.querySelectorAll(".solvedConcept");
+            for (var i = 0, j = solvedStuff.length; i < j; i++) {
+                solvedStuff[i].classList.remove("activeConcept");
+                solvedStuff[i].classList.remove("clickableConcept");
+            }
+
+            updateScore();
+            checkIfComplete();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="instructions">
+            <p class="larger">In <b>Language & Cognition</b>, we investigate how people learn language and how this
+                influences their thinking. Looking at other languages is a really good way to do this.</p>
+            <p>Match the translated sayings from other languages below to the correct meaning on the right!</p>
+        </div>
+        <div class="score">
+            <p><b>Score: <span id="score">0</span></b></p>
+            <p>Correct Guesses: <span id="correctGuesses">0</span>
+                <br>Incorrect Guesses: <span id="incorrectGuesses">0</span>
+            </p>
+        </div>
+        <div class="sayings">
+            <p><b>Sayings</b></p>
+            <ul class="conceptlist">
+                <li><a class="clickableConcept" id="thai_saying" href="javascript:void(0);"
+                        onclick="clickedSaying('thai_saying')">&quot;One afternoon in your next reincarnation&quot; (Thai)</a>
+                </li>
+                <li><a class="clickableConcept" id="latvian_saying" href="javascript:void(0);"
+                        onclick="clickedSaying('latvian_saying')">&quot;Go pick mushrooms!&quot; (Latvian)</a>
+                </li>
+                <li><a class="clickableConcept" id="japanese_saying" href="javascript:void(0);"
+                        onclick="clickedSaying('japanese_saying')">&quot;To wear a cat on one's head&quot; (Japanese)</a>
+                </li>
+                <li><a class="clickableConcept" id="polish_saying" href="javascript:void(0);"
+                        onclick="clickedSaying('polish_saying')">&quot;Did you fall from a Christmas tree?&quot; (Polish)</a>
+                </li>
+                <li><a class="clickableConcept" id="swedish_saying" href="javascript:void(0);"
+                        onclick="clickedSaying('swedish_saying')">&quot;You slid in on a shrimp sandwich&quot; (Swedish)</a>
+                </li>
+            </ul>
+        </div>
+        <div class="meanings">
+            <p><b>Meanings</b></p>
+            <ul class="conceptlist">
+                <li><a class="clickableConcept" id="latvian" href="javascript:void(0);"
+                        onclick="clickedMeaning('latvian')">Leave me alone</a>
+                </li>
+                <li><a class="clickableConcept" id="polish" href="javascript:void(0);"
+                        onclick="clickedMeaning('polish')">You are not well informed, and it
+                        shows</a>
+                </li>
+                <li><a class="clickableConcept" id="thai" href="javascript:void(0);"
+                        onclick="clickedMeaning('thai')">It's never gonna happen</a>
+                </li>
+                <li><a class="clickableConcept" id="swedish" href="javascript:void(0);"
+                        onclick="clickedMeaning('swedish')">You didn't have to
+                        work to get where you are</a>
+                </li>
+                <li><a class="clickableConcept" id="japanese" href="javascript:void(0);"
+                        onclick="clickedMeaning('japanese')">Pretending to be a nice, harmless person</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div><a href="javascript:void(0);" onclick="nextTask('finished.html')" class="contilink skip" id="continue">Skip to
+            next area &gt;</a></div>
+</body>
+<script>
+    updateScore();
+</script>
+
+</html>

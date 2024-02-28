@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel='stylesheet' href='./style.css' type='text/css'>
+    <link rel='stylesheet' href='./style_cyber.css' type='text/css'>
+    <script src="helpers.js"></script>
+    <script>
+        var activeConcept = "";
+        var activeExample = "";
+        var solvedItems = [];
+        var correctGuesses = 0;
+        var incorrectGuesses = 0;
+        var toSolve = 4;
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="instructions">
+            <p class="larger">In <b>Cyberpsychology</b>, cognitive biases - irrational ways of behaving and making
+                decisions - are used to design websites in order to influence users to
+                behave
+                in certain ways.</p>
+            <p>Find the cognitive tricks on the example website below!</p>
+        </div>
+        <div class="score">
+            <p><b>Score: <span id="score">0</span></b></p>
+            <p>Correct Guesses: <span id="correctGuesses">0</span>
+                <br>Incorrect Guesses: <span id="incorrectGuesses">0</span>
+            </p>
+        </div>
+        <div class="concepts">
+            <ul class="conceptlist">
+                <li><a class="clickableConcept" id="anchoring_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('anchoring_concept')">Anchoring Effect</a>
+                    <p class="details" style="display: none;">We evaluate prices by the surrounding context. A price
+                        will seem lower in the context of high prices, or higher in the context of low prices. This is
+                        used to make prices appear more attractive than they are.</p>
+                </li>
+                <li><a class="clickableConcept" id="statusquo_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('statusquo_concept')">Default Effect</a>
+                    <p class="details" style="display: none;">People have a bias to accept default options - this
+                        decreases the amount of decisions they need to make. This is used to get people to buy more when
+                        they would have chosen less.</p>
+                </li>
+                <li><a class="clickableConcept" id="goalgradient_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('goalgradient_concept')">Goal Gradient</a>
+                    <p class="details" style="display: none;">People are more likely to stick with something until they
+                        have finished if they can see their progress towards the goal.</p>
+                </li>
+                <li><a class="clickableConcept" id="socialproof_concept" href="javascript:void(0);"
+                        onclick="clickedConcept('socialproof_concept')">Social Proof</a>
+                    <p class="details" style="display: none;">When people make a decision, they tend to look at what
+                        decisions others have made and use that to influence their own choice. This is used to steer
+                        people towards popular choices.</p>
+                </li>
+            </ul>
+            </p>
+        </div>
+        <div class="examples">
+            <div>
+                <img src="framing_effects.png" id="framingeffects" />
+                <a id="all" href="javascript:void(0);" onclick=""> </a>
+                <a class="correct clickableExample" id="statusquo" href="javascript:void(0);"
+                    onclick="clickedExample('statusquo')"> </a>
+                <a class="correct clickableExample" id="socialproof" href="javascript:void(0);"
+                    onclick="clickedExample('socialproof')"> </a>
+                <a class="correct clickableExample" id="anchoring" href="javascript:void(0);"
+                    onclick="clickedExample('anchoring')"> </a>
+                <a class="correct clickableExample" id="goalgradient" href="javascript:void(0);"
+                    onclick="clickedExample('goalgradient')"> </a>
+            </div>
+        </div>
+    </div>
+    <div><a href="javascript:void(0);" onclick="nextTask('language.html')" class="contilink skip" id="continue">Skip to next area &gt;</a></div>
+</body>
+<script>
+    updateScore();
+    document.getElementById('all').addEventListener('click', wrongClick);
+    var trueExamples = document.getElementsByClassName('correct');
+    for (var i = 0, j = trueExamples.length; i < j; i++) {
+        trueExamples[i].addEventListener('click', correctClick);
+    }
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+.concepts {
+    /* border-style: solid; */
+    /* border-color: yellow; */
+    background-color: inherit;
+    grid-column: 1 / 4;
+    grid-row: 2 / -1;
+    overflow: auto;
+}
+
+.examples {
+    /* border-style: solid; */
+    /* border-color: violet; */
+    grid-column: 4 / -1;
+    grid-row: 2 / -1;
+    background-color: inherit;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+}
+
+#all {
+    border: 1px solid black;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#statusquo {
+    /* border: 1px solid red; */
+    left: 73.5%;
+    top: 42%;
+    height: 7.5%;
+    width: 6%;
+    position: absolute;
+}
+
+#socialproof {
+    /* border: 1px solid red; */
+    left: 80%;
+    top: 54%;
+    height: 6%;
+    width: 12%;
+    position: absolute;
+}
+
+#anchoring {
+    /* border: 1px solid red; */
+    left: 52%;
+    top: 69%;
+    height: 12%;
+    width: 41%;
+    position: absolute;
+}
+
+#goalgradient {
+    /* border: 1px solid red; */
+    left: 25%;
+    top: 8%;
+    height: 8%;
+    width: 50%;
+    position: absolute;
+}

@@ -1,0 +1,73 @@
+.concepts {
+    /* border-style: solid; */
+    /* border-color: yellow; */
+    background-color: inherit;
+    grid-column: 1 / 4;
+    grid-row: 2 / -1;
+    overflow: auto;
+}
+
+.examples {
+    /* border-style: solid; */
+    /* border-color: violet; */
+    grid-column: 4 / -1;
+    grid-row: 2 / -1;
+    background-color: inherit;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+}
+
+#all {
+    border: 1px solid black;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#alzheimers {
+    /* border: 1px solid red; */
+    left: 13%;
+    top: 62%;
+    height: 29%;
+    width: 25%;
+    position: absolute;
+}
+
+#tumors {
+    /* border: 1px solid red; */
+    left: 5%;
+    top: 6%;
+    height: 26%;
+    width: 18%;
+    position: absolute;
+}
+
+#parkinsons {
+    /* border: 1px solid red; */
+    left: 58%;
+    top: 3%;
+    height: 30%;
+    width: 39%;
+    position: absolute;
+}
+
+#hemor {
+    /* border: 1px solid red; */
+    left: 65%;
+    top: 62%;
+    height: 29%;
+    width: 15%;
+    position: absolute;
+}
+
+#ischemic {
+    /* border: 1px solid red; */
+    left: 39%;
+    top: 30%;
+    height: 29%;
+    width: 15%;
+    position: absolute;
+}

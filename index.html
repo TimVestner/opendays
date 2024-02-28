@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel='stylesheet' href='./style.css' type='text/css'>
+    <link rel='stylesheet' href='./style_index.css' type='text/css'>
+    <script src="helpers.js"></script>
+    <script>
+        function readTeamName() {
+            let teamName = document.getElementById("teamName").value.toString();
+            if (teamName == "") { return; }
+
+
+            localStorage.currentTeam = teamName;
+            // localStorage.score = 0;
+
+            let teamList;
+            if (localStorage.teamList == null) {
+                teamList = [{ "Teamname": teamName, "Score": 0 }];
+            } else {
+                teamList = JSON.parse(localStorage.getItem('teamList'));
+                teamList.push({ "Teamname": teamName, "Score": 0 });
+            }
+            localStorage.setItem('teamList', JSON.stringify(teamList));
+            window.location.href = "neuro.html";
+        }
+
+        function enterPressed() {
+            if (event.key != 'Enter') { return; }
+            readTeamName();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="instructions">
+            <h1>Cognitive Matching Game</h1>
+            <p class="signature">by Tim Vestner</p>
+        </div>
+
+        <div class="score">
+        </div>
+
+        <div class="empty">
+        </div>
+
+        <div class="intro">
+            <p>In <b>Cognitive Psychology</b> we study how people think and process information. This activity will show
+                you where we can apply this in real-life areas.</p>
+            <p>You will be shown a description of an area and some concepts from that area on the left. You can click on
+                them to get more
+                information. Your task is to match them to the examples on the right. You'll get points for each correct
+                match and lose points for each incorrect guess.</p>
+            <p>But first, you must solve the most difficult task - come up with a team name!</p>
+            <p><input type="text" id="teamName" placeholder="Enter your team name..." pattern="[a-zA-Z0-9]+"
+                    maxlength="20" autofocus onkeydown="enterPressed()"><a href="javascript:void(0);"
+                    onclick="readTeamName()" id="startlink">Start</a></p>
+        </div>
+
+        <div class="highscores">
+            <p><b>Leaderboard</b></p>
+            <ul class="conceptlist" id="scorelist">
+            </ul>
+            </p>
+        </div>
+    </div>
+</body>
+
+<script>
+    window.onload = () => {
+        document.getElementById('teamName').value = '';
+        populateHighScores();
+    }
+</script>
+
+</html>
