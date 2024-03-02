@@ -32,32 +32,33 @@
             </p>
         </div>
         <div class="concepts">
+            <p><b>Cognitive Tricks</b></p>
+            <p>Click for details, then click the corresponding image</p>
             <ul class="conceptlist">
                 <li><a class="clickableConcept" id="anchoring_concept" href="javascript:void(0);"
-                        onclick="clickedConcept('anchoring_concept')">Anchoring Effect</a>
+                        onclick="clickedConcept('anchoring_concept')"><span class="righttriangle">&blacktriangleright;</span><span class="downtriangle">&blacktriangledown;</span>Anchoring Effect</a>
                     <p class="details" style="display: none;">We evaluate prices by the surrounding context. A price
                         will seem lower in the context of high prices, or higher in the context of low prices. This is
                         used to make prices appear more attractive than they are.</p>
                 </li>
                 <li><a class="clickableConcept" id="statusquo_concept" href="javascript:void(0);"
-                        onclick="clickedConcept('statusquo_concept')">Default Effect</a>
+                        onclick="clickedConcept('statusquo_concept')"><span class="righttriangle">&blacktriangleright;</span><span class="downtriangle">&blacktriangledown;</span>Default Effect</a>
                     <p class="details" style="display: none;">People have a bias to accept default options - this
                         decreases the amount of decisions they need to make. This is used to get people to buy more when
                         they would have chosen less.</p>
                 </li>
                 <li><a class="clickableConcept" id="goalgradient_concept" href="javascript:void(0);"
-                        onclick="clickedConcept('goalgradient_concept')">Goal Gradient</a>
+                        onclick="clickedConcept('goalgradient_concept')"><span class="righttriangle">&blacktriangleright;</span><span class="downtriangle">&blacktriangledown;</span>Goal Gradient</a>
                     <p class="details" style="display: none;">People are more likely to stick with something until they
                         have finished if they can see their progress towards the goal.</p>
                 </li>
                 <li><a class="clickableConcept" id="socialproof_concept" href="javascript:void(0);"
-                        onclick="clickedConcept('socialproof_concept')">Social Proof</a>
+                        onclick="clickedConcept('socialproof_concept')"><span class="righttriangle">&blacktriangleright;</span><span class="downtriangle">&blacktriangledown;</span>Social Proof</a>
                     <p class="details" style="display: none;">When people make a decision, they tend to look at what
                         decisions others have made and use that to influence their own choice. This is used to steer
                         people towards popular choices.</p>
                 </li>
             </ul>
-            </p>
         </div>
         <div class="examples">
             <div>
@@ -75,14 +76,14 @@
         </div>
     </div>
     <div><a href="javascript:void(0);" onclick="nextTask('language.html')" class="contilink skip" id="continue">Skip to next area &gt;</a></div>
+    <script>
+        updateScore();
+        document.getElementById('all').addEventListener('click', wrongClick);
+        var trueExamples = document.getElementsByClassName('correct');
+        for (var i = 0, j = trueExamples.length; i < j; i++) {
+            trueExamples[i].addEventListener('click', correctClick);
+        }
+    </script>
 </body>
-<script>
-    updateScore();
-    document.getElementById('all').addEventListener('click', wrongClick);
-    var trueExamples = document.getElementsByClassName('correct');
-    for (var i = 0, j = trueExamples.length; i < j; i++) {
-        trueExamples[i].addEventListener('click', correctClick);
-    }
-</script>
 
 </html>
