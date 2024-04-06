@@ -8,14 +8,18 @@
 }
 
 .examples {
-    /* border-style: solid; */
-    /* border-color: violet; */
+/*     border-style: solid;
+    border-color: violet; */
     grid-column: 4 / -1;
     grid-row: 2 / -1;
     background-color: inherit;
     position: relative;
     align-self: center;
     justify-self: center;
+}
+
+.reveal {
+    text-decoration: underline;
 }
 
 #all {
@@ -30,17 +34,17 @@
 #statusquo {
     /* border: 1px solid red; */
     left: 73.5%;
-    top: 42%;
-    height: 7.5%;
-    width: 6%;
+    top: 41.5%;
+    height: 8%;
+    width: 6.5%;
     position: absolute;
 }
 
 #socialproof {
     /* border: 1px solid red; */
     left: 80%;
-    top: 54%;
-    height: 6%;
+    top: 53%;
+    height: 7%;
     width: 12%;
     position: absolute;
 }

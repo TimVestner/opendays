@@ -13,6 +13,17 @@
         var correctGuesses = 0;
         var incorrectGuesses = 0;
         var toSolve = 4;
+
+        function reveal() {
+            var clickableExamples = document.getElementsByClassName('clickableExample');
+                    incorrectGuesses++;
+            for (var i = 0, j = clickableExamples.length; i < j; i++) {
+                if (!clickableExamples[i].classList.contains("alwaysShownExample")) {
+                    clickableExamples[i].classList.add("alwaysShownExample");
+                } 
+            }
+            updateScore();
+        }
     </script>
 </head>
 
@@ -23,7 +34,7 @@
                 decisions - are used to design websites in order to influence users to
                 behave
                 in certain ways.</p>
-            <p>Find the cognitive tricks on the example website below!</p>
+            <!-- <p>Find the cognitive tricks on the example website below!</p> -->
         </div>
         <div class="score">
             <p><b>Score: <span id="score">0</span></b></p>
@@ -32,8 +43,9 @@
             </p>
         </div>
         <div class="concepts">
+            <p>Click for details, then find where each trick is used on the example website on the right.</p>
+            <p>Too Difficult? <br><b><a href="javascript:void(0);" class="reveal" onclick="reveal()">Click here to reveal all examples.</a></b></p>
             <p><b>Cognitive Tricks</b></p>
-            <p>Click for details, then click the corresponding image</p>
             <ul class="conceptlist">
                 <li><a class="clickableConcept" id="anchoring_concept" href="javascript:void(0);"
                         onclick="clickedConcept('anchoring_concept')"><span class="righttriangle">&blacktriangleright;</span><span class="downtriangle">&blacktriangledown;</span>Anchoring Effect</a>
@@ -62,7 +74,7 @@
         </div>
         <div class="examples">
             <div>
-                <img src="framing_effects.png" id="framingeffects" />
+                <img src="framing_effects_example.png" id="framingeffects" />
                 <a id="all" href="javascript:void(0);" onclick=""> </a>
                 <a class="correct clickableExample" id="statusquo" href="javascript:void(0);"
                     onclick="clickedExample('statusquo')"> </a>

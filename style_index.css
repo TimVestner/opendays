@@ -35,10 +35,21 @@ li {
     background-color: inherit;
 }
 
+.suggestion {
+    border: solid 1px black;
+    /* background-color: lightblue; */
+    background-color: rgb(230, 246, 255);
+    /* box-shadow: 1px 1px 4px rgb(52, 90, 90); */
+    margin-left: 1rem;
+    padding: 4px 8px 5px 8px;
+    font-weight: bold;
+
+}
+
 #startlink {    
     border: solid 1px black;
     /* background-color: lightblue; */
-    background-color: lightblue;
+    background-color: rgb(182, 227, 254);;
     box-shadow: 1px 1px 4px rgb(52, 90, 90);
     margin-left: 1rem;
     padding: 4px 8px 5px 8px;
@@ -46,5 +57,5 @@ li {
 }
 
 #startlink:hover {
-    background-color: rgb(155, 194, 207);
+    background-color: lightblue;
 }

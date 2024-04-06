@@ -8,14 +8,28 @@
     <script src="helpers.js"></script>
     <script>
         function readTeamName() {
+            let teamList;
             let teamName = document.getElementById("teamName").value.toString();
             if (teamName == "") { return; }
 
+            if (!document.getElementById("teamName").checkValidity()) {
+                document.getElementById("validity").style.display = "inline-block";
+                return;
+            }
+
+            if (localStorage.teamList != null) {
+                teamList = JSON.parse(localStorage.getItem('teamList'));
+                for (var i = 0, j = teamList.length; i < j; i++) {
+                    if (teamList[i].Teamname == teamName) {
+                        document.getElementById("takenName").style.display = "inline-block";
+                        return;
+                    }
+                }
+            }
 
             localStorage.currentTeam = teamName;
             // localStorage.score = 0;
 
-            let teamList;
             if (localStorage.teamList == null) {
                 teamList = [{ "Teamname": teamName, "Score": 0 }];
             } else {
@@ -27,8 +41,16 @@
         }
 
         function enterPressed() {
+            document.getElementById("takenName").style.display = "none";
+            document.getElementById("validity").style.display = "none";
             if (event.key != 'Enter') { return; }
             readTeamName();
+        }
+
+        function populateName(name) {
+            document.getElementById("takenName").style.display = "none";
+            document.getElementById("validity").style.display = "none";
+            document.getElementById("teamName").value = name;
         }
     </script>
 </head>
@@ -55,9 +77,37 @@
                 information. Your task is to match them to the examples on the right. You'll get points for each correct
                 match and lose points for each incorrect guess.</p>
             <p>But first, you must solve the most difficult task - come up with a team name!</p>
-            <p><input type="text" id="teamName" placeholder="Enter your team name..." pattern="[a-zA-Z0-9]+"
+            <p><input type="text" id="teamName" placeholder="Enter your team name..." pattern="[a-zA-Z0-9 ]+"
                     maxlength="20" autofocus onkeydown="enterPressed()"><a href="javascript:void(0);"
-                    onclick="readTeamName()" id="startlink">Start</a></p>
+                    onclick="readTeamName()" id="startlink">Start</a><br><span id="takenName" class="warning">Sorry,
+                    that one is
+                    taken.</span><span id="validity" class="warning">Sorry,
+                    only letters and numbers.</span></p>
+            <p>Or just use one of these ones:</p>
+            <p>
+                <a href="javascript:void(0);" onclick="populateName('Blue Team')" class="suggestion">Blue Team</a>
+                <a href="javascript:void(0);" onclick="populateName('Red Team')" class="suggestion">Red Team</a>
+                <a href="javascript:void(0);" onclick="populateName('Green Team')" class="suggestion">Green Team</a>
+                <a href="javascript:void(0);" onclick="populateName('Purple Team')" class="suggestion">Purple Team</a>
+                <a href="javascript:void(0);" onclick="populateName('Orange Team')" class="suggestion">Orange Team</a>
+            </p>
+            <p>
+                <a href="javascript:void(0);" onclick="populateName('Leeds Leopards')" class="suggestion">Leeds
+                    Leopards</a>
+                <a href="javascript:void(0);" onclick="populateName('Horsforth Hedgehogs')" class="suggestion">Horsforth
+                    Hedgehogs</a>
+                <a href="javascript:void(0);" onclick="populateName('Yorkshire Yorkies')" class="suggestion">Yorkshire
+                    Yorkies</a>
+            </p>
+            <p>
+                <a href="javascript:void(0);" onclick="populateName('Freudian Slippers')" class="suggestion">Freudian
+                    Slippers</a>
+                <a href="javascript:void(0);" onclick="populateName('Pavlovs Puppies')" class="suggestion">Pavlov&apos;s
+                    Puppies</a>
+                <a href="javascript:void(0);" onclick="populateName('Master Minds')" class="suggestion">Master Minds</a>
+                <a href="javascript:void(0);" onclick="populateName('Psychologeeks')"
+                    class="suggestion">Psychologeeks</a>
+            </p>
         </div>
 
         <div class="highscores">

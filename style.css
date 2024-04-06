@@ -177,6 +177,10 @@ input[type=text] {
     /*object-fit: contain;*/
 }
 
+.alwaysShownExample {
+    border: 3px solid orange;
+}
+
 .activeExample {
     border: 3px solid lightblue;
 }
@@ -198,6 +202,11 @@ input[type=text] {
 
 .anchor {
     position: relative;
+}
+
+.warning {
+    color: red;
+    display: none;
 }
 
 .signature {
